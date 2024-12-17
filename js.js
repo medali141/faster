@@ -6,28 +6,120 @@ document.addEventListener('DOMContentLoaded', function() {
     // Define the parts data
     const partsData = {
         engine: {
-            stock: { name: "Stock Engine", price: 0 },
-            stage1: { name: "Stage 1 Tune", price: 2500 }, // ~2500 TND
-            stage2: { name: "Stage 2 Tune", price: 4800 }, // ~4800 TND
-            stage3: { name: "Stage 3 Tune", price: 7900 }  // ~7900 TND
-        },
-        suspension: {
-            stock: { name: "Stock Suspension", price: 0 },
-            sport: { name: "Sport Suspension", price: 3200 },    // ~3200 TND
-            performance: { name: "Performance Coilovers", price: 5500 }, // ~5500 TND
-            air: { name: "Air Suspension", price: 12000 }        // ~12000 TND
+            title: "Engine Tuning Options",
+            options: [
+                {
+                    name: "Stage 1 ECU Tune",
+                    price: 1800,  // Changed to TND
+                    image: "https://images.unsplash.com/photo-1591439657848-9f4b9ce436b9",
+                    description: "Basic ECU remapping for better performance",
+                    specs: [
+                        "Power: +30 HP",
+                        "Torque: +40 Nm",
+                        "Improved throttle response",
+                        "Better fuel efficiency"
+                    ]
+                },
+                {
+                    name: "Stage 2 Performance Pack",
+                    price: 4500,  // Changed to TND
+                    image: "https://images.unsplash.com/photo-1537149622514-f0f71bdc038e",
+                    description: "Advanced tuning with hardware upgrades",
+                    specs: [
+                        "Power: +50 HP",
+                        "Torque: +70 Nm",
+                        "High-flow air intake",
+                        "Performance exhaust system"
+                    ]
+                }
+            ]
         },
         brakes: {
-            stock: { name: "Stock Brakes", price: 0 },
-            sport: { name: "Sport Brakes", price: 2800 },      // ~2800 TND
-            performance: { name: "Performance Brakes", price: 4500 }, // ~4500 TND
-            racing: { name: "Racing Brakes", price: 7500 }     // ~7500 TND
+            title: "Brake System Options",
+            options: [
+                {
+                    name: "Sport Brake Package",
+                    price: 2700,  // Changed to TND
+                    image: "https://images.unsplash.com/photo-1567789884554-0b844b597180",
+                    description: "Enhanced braking performance for street use",
+                    specs: [
+                        "High-performance brake pads",
+                        "Stainless steel brake lines",
+                        "Performance brake fluid",
+                        "Slotted rotors"
+                    ]
+                },
+                {
+                    name: "Big Brake Kit",
+                    price: 7500,  // Changed to TND
+                    image: "https://images.unsplash.com/photo-1588193900307-4a426f29d8ba",
+                    description: "Professional grade brake system upgrade",
+                    specs: [
+                        "6-piston calipers",
+                        "380mm rotors",
+                        "Braided brake lines",
+                        "Racing brake pads"
+                    ]
+                }
+            ]
         },
         bodykit: {
-            stock: { name: "Stock Body", price: 0 },
-            sport: { name: "Sport Body Kit", price: 4200 },    // ~4200 TND
-            wide: { name: "Wide Body Kit", price: 8500 },      // ~8500 TND
-            custom: { name: "Custom Body Kit", price: 15000 }  // ~15000 TND
+            title: "Body Kit Options",
+            options: [
+                {
+                    name: "Sport Style Kit",
+                    price: 5700,  // Changed to TND
+                    image: "https://images.unsplash.com/photo-1603386329225-868f9b1ee6c9",
+                    description: "Enhanced sporty appearance",
+                    specs: [
+                        "Front lip spoiler",
+                        "Side skirts",
+                        "Rear diffuser",
+                        "Trunk spoiler"
+                    ]
+                },
+                {
+                    name: "Wide Body Kit",
+                    price: 10500,  // Changed to TND
+                    image: "https://images.unsplash.com/photo-1603386329225-868f9b1ee6c9",
+                    description: "Complete body transformation",
+                    specs: [
+                        "Wide fenders",
+                        "Custom bumpers",
+                        "Side skirts",
+                        "Rear wing"
+                    ]
+                }
+            ]
+        },
+        suspension: {
+            title: "Suspension Options",
+            options: [
+                {
+                    name: "Lowering Springs",
+                    price: 2400,  // Changed to TND
+                    image: "https://images.unsplash.com/photo-1580274455191-1c62238fa333",
+                    description: "Lower your ride height and improve handling",
+                    specs: [
+                        "30-40mm drop",
+                        "Progressive spring rate",
+                        "Improved cornering",
+                        "OEM-quality materials"
+                    ]
+                },
+                {
+                    name: "Coilover Kit",
+                    price: 6600,  // Changed to TND
+                    image: "https://images.unsplash.com/photo-1580274455191-1c62238fa333",
+                    description: "Full adjustable suspension system",
+                    specs: [
+                        "Height adjustable",
+                        "32-way damping",
+                        "Camber adjustable",
+                        "Track-ready setup"
+                    ]
+                }
+            ]
         }
     };
 
@@ -82,7 +174,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 </div>
                 <div class="option-info">
                     <h3>${option.name}</h3>
-                    <p class="price">$${option.price.toLocaleString()}</p>
+                    <p class="price">${option.price.toLocaleString()} TND</p>
                     <p class="description">${option.description}</p>
                     <ul class="specs">
                         ${option.specs.map(spec => `<li>${spec}</li>`).join('')}
@@ -101,24 +193,24 @@ document.addEventListener('DOMContentLoaded', function() {
                 // Add active class to selected card
                 optionCard.classList.add('active');
                 
-                // Update total price
-                document.getElementById('total-price').textContent = option.price.toLocaleString();
+                // Update total price without $ sign
+                document.getElementById('total-price').textContent = `${option.price.toLocaleString()} TND`;
             });
 
             optionsContent.appendChild(optionCard);
         });
     }
 
-    // Update the price display function to show TND
+    // Update the total price display function
     function updateTotalPrice() {
         let total = 0;
-        for (const part in selectedParts) {
-            total += partsData[part][selectedParts[part]].price;
-        }
+        document.querySelectorAll('.option-card.active').forEach(card => {
+            const priceText = card.querySelector('.price').textContent;
+            const price = parseInt(priceText.replace(/[^\d]/g, ''));
+            total += price;
+        });
+        // Remove the $ sign from the total price display
         document.getElementById('total-price').textContent = `${total.toLocaleString()} TND`;
-        if (document.getElementById('checkoutTotal')) {
-            document.getElementById('checkoutTotal').textContent = `${total.toLocaleString()} TND`;
-        }
     }
 
     // Update the order details display
@@ -127,15 +219,16 @@ document.addEventListener('DOMContentLoaded', function() {
         if (!orderDetails) return;
 
         let html = '';
-        for (const part in selectedParts) {
-            const selection = partsData[part][selectedParts[part]];
+        document.querySelectorAll('.option-card.active').forEach(card => {
+            const name = card.querySelector('h3').textContent;
+            const price = card.querySelector('.price').textContent;
             html += `
                 <div class="order-item">
-                    <span>${selection.name}</span>
-                    <span>${selection.price.toLocaleString()} TND</span>
+                    <span>${name}</span>
+                    <span>${price}</span>
                 </div>
             `;
-        }
+        });
         orderDetails.innerHTML = html;
     }
 });
