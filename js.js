@@ -6,120 +6,28 @@ document.addEventListener('DOMContentLoaded', function() {
     // Define the parts data
     const partsData = {
         engine: {
-            title: "Engine Tuning Options",
-            options: [
-                {
-                    name: "Stage 1 ECU Tune",
-                    price: 599,
-                    image: "https://images.unsplash.com/photo-1591439657848-9f4b9ce436b9",
-                    description: "Basic ECU remapping for better performance",
-                    specs: [
-                        "Power: +30 HP",
-                        "Torque: +40 Nm",
-                        "Improved throttle response",
-                        "Better fuel efficiency"
-                    ]
-                },
-                {
-                    name: "Stage 2 Performance Pack",
-                    price: 1499,
-                    image: "https://images.unsplash.com/photo-1537149622514-f0f71bdc038e",
-                    description: "Advanced tuning with hardware upgrades",
-                    specs: [
-                        "Power: +50 HP",
-                        "Torque: +70 Nm",
-                        "High-flow air intake",
-                        "Performance exhaust system"
-                    ]
-                }
-            ]
-        },
-        brakes: {
-            title: "Brake System Options",
-            options: [
-                {
-                    name: "Sport Brake Package",
-                    price: 899,
-                    image: "https://images.unsplash.com/photo-1567789884554-0b844b597180",
-                    description: "Enhanced braking performance for street use",
-                    specs: [
-                        "High-performance brake pads",
-                        "Stainless steel brake lines",
-                        "Performance brake fluid",
-                        "Slotted rotors"
-                    ]
-                },
-                {
-                    name: "Big Brake Kit",
-                    price: 2499,
-                    image: "https://images.unsplash.com/photo-1588193900307-4a426f29d8ba",
-                    description: "Professional grade brake system upgrade",
-                    specs: [
-                        "6-piston calipers",
-                        "380mm rotors",
-                        "Braided brake lines",
-                        "Racing brake pads"
-                    ]
-                }
-            ]
-        },
-        bodykit: {
-            title: "Body Kit Options",
-            options: [
-                {
-                    name: "Sport Style Kit",
-                    price: 1899,
-                    image: "https://images.unsplash.com/photo-1603386329225-868f9b1ee6c9",
-                    description: "Enhanced sporty appearance",
-                    specs: [
-                        "Front lip spoiler",
-                        "Side skirts",
-                        "Rear diffuser",
-                        "Trunk spoiler"
-                    ]
-                },
-                {
-                    name: "Wide Body Kit",
-                    price: 3499,
-                    image: "https://images.unsplash.com/photo-1603386329225-868f9b1ee6c9",
-                    description: "Complete body transformation",
-                    specs: [
-                        "Wide fenders",
-                        "Custom bumpers",
-                        "Side skirts",
-                        "Rear wing"
-                    ]
-                }
-            ]
+            stock: { name: "Stock Engine", price: 0 },
+            stage1: { name: "Stage 1 Tune", price: 2500 }, // ~2500 TND
+            stage2: { name: "Stage 2 Tune", price: 4800 }, // ~4800 TND
+            stage3: { name: "Stage 3 Tune", price: 7900 }  // ~7900 TND
         },
         suspension: {
-            title: "Suspension Options",
-            options: [
-                {
-                    name: "Lowering Springs",
-                    price: 799,
-                    image: "https://images.unsplash.com/photo-1580274455191-1c62238fa333",
-                    description: "Lower your ride height and improve handling",
-                    specs: [
-                        "30-40mm drop",
-                        "Progressive spring rate",
-                        "Improved cornering",
-                        "OEM-quality materials"
-                    ]
-                },
-                {
-                    name: "Coilover Kit",
-                    price: 2199,
-                    image: "https://images.unsplash.com/photo-1580274455191-1c62238fa333",
-                    description: "Full adjustable suspension system",
-                    specs: [
-                        "Height adjustable",
-                        "32-way damping",
-                        "Camber adjustable",
-                        "Track-ready setup"
-                    ]
-                }
-            ]
+            stock: { name: "Stock Suspension", price: 0 },
+            sport: { name: "Sport Suspension", price: 3200 },    // ~3200 TND
+            performance: { name: "Performance Coilovers", price: 5500 }, // ~5500 TND
+            air: { name: "Air Suspension", price: 12000 }        // ~12000 TND
+        },
+        brakes: {
+            stock: { name: "Stock Brakes", price: 0 },
+            sport: { name: "Sport Brakes", price: 2800 },      // ~2800 TND
+            performance: { name: "Performance Brakes", price: 4500 }, // ~4500 TND
+            racing: { name: "Racing Brakes", price: 7500 }     // ~7500 TND
+        },
+        bodykit: {
+            stock: { name: "Stock Body", price: 0 },
+            sport: { name: "Sport Body Kit", price: 4200 },    // ~4200 TND
+            wide: { name: "Wide Body Kit", price: 8500 },      // ~8500 TND
+            custom: { name: "Custom Body Kit", price: 15000 }  // ~15000 TND
         }
     };
 
@@ -199,5 +107,35 @@ document.addEventListener('DOMContentLoaded', function() {
 
             optionsContent.appendChild(optionCard);
         });
+    }
+
+    // Update the price display function to show TND
+    function updateTotalPrice() {
+        let total = 0;
+        for (const part in selectedParts) {
+            total += partsData[part][selectedParts[part]].price;
+        }
+        document.getElementById('total-price').textContent = `${total.toLocaleString()} TND`;
+        if (document.getElementById('checkoutTotal')) {
+            document.getElementById('checkoutTotal').textContent = `${total.toLocaleString()} TND`;
+        }
+    }
+
+    // Update the order details display
+    function updateOrderDetails() {
+        const orderDetails = document.getElementById('orderDetails');
+        if (!orderDetails) return;
+
+        let html = '';
+        for (const part in selectedParts) {
+            const selection = partsData[part][selectedParts[part]];
+            html += `
+                <div class="order-item">
+                    <span>${selection.name}</span>
+                    <span>${selection.price.toLocaleString()} TND</span>
+                </div>
+            `;
+        }
+        orderDetails.innerHTML = html;
     }
 });
