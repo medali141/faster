@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAST - Car Tuning Parts</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="configurator-page">
+    <header>
+        <nav>
+            <div class="logo">
+                <a href="index.html" class="logo-link">
+                    <img src="logo.jpg" alt="FAST Logo" class="logo-img">
+                    <span class="logo-text">FAST</span>
+                </a>
+            </div>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="configurator.html" class="active">Configurator</a></li>
+                <li><a href="gallery.html">Gallery</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Parts Selection Step -->
+        <div class="step-container" id="partsSelection">
+            <div class="parts-grid">
+                <div class="part-card" data-part="engine">
+                    <img src="https://images.unsplash.com/photo-1591439657848-9f4b9ce436b9" alt="Engine Tuning">
+                    <div class="part-info">
+                        <h2>Engine Tuning</h2>
+                        <p>Boost your engine performance</p>
+                        <button class="customize-btn">CUSTOMIZE</button>
+                    </div>
+                    <div class="overlay"></div>
+                </div>
+
+                <div class="part-card" data-part="suspension">
+                    <img src="https://images.unsplash.com/photo-1580274455191-1c62238fa333" alt="Suspension">
+                    <div class="part-info">
+                        <h2>Suspension</h2>
+                        <p>Enhance handling and stability</p>
+                        <button class="customize-btn">CUSTOMIZE</button>
+                    </div>
+                    <div class="overlay"></div>
+                </div>
+
+                <div class="part-card" data-part="brakes">
+                    <img src="https://images.unsplash.com/photo-1567789884554-0b844b597180" alt="Brake System">
+                    <div class="part-info">
+                        <h2>Brake System</h2>
+                        <p>Improve stopping power</p>
+                        <button class="customize-btn">CUSTOMIZE</button>
+                    </div>
+                    <div class="overlay"></div>
+                </div>
+
+                <div class="part-card" data-part="bodykit">
+                    <img src="https://images.unsplash.com/photo-1603386329225-868f9b1ee6c9" alt="Body Kits">
+                    <div class="part-info">
+                        <h2>Body Kits</h2>
+                        <p>Transform your car's appearance</p>
+                        <button class="customize-btn">CUSTOMIZE</button>
+                    </div>
+                    <div class="overlay"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Configurator Interface -->
+        <div class="configurator-container" id="configurator" style="display: none;">
+            <div class="options-panel">
+                <div class="options-content">
+                    <!-- Options will be loaded dynamically -->
+                </div>
+                <div class="price-display">
+                    Total: $<span id="total-price">0</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Checkout Form -->
+        <div class="checkout-container" id="checkout" style="display: none;">
+            <h2>Complete Your Order</h2>
+            <form id="checkoutForm">
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone</label>
+                    <input type="tel" id="phone" required>
+                </div>
+                <div class="form-group">
+                    <label for="address">Delivery Address</label>
+                    <textarea id="address" required></textarea>
+                </div>
+                <div class="order-summary">
+                    <h3>Order Summary</h3>
+                    <div id="orderDetails"></div>
+                    <div class="total">
+                        Total: $<span id="checkoutTotal">0</span>
+                    </div>
+                </div>
+                <button type="submit" class="submit-order-btn">Place Order</button>
+            </form>
+        </div>
+    </main>
+
+    <footer>
+        <p class="copyright">&copy; 2024 FAST Car Tuning. All rights reserved.</p>
+    </footer>
+
+    <script src="js.js"></script>
+</body>
+</html> 

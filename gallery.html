@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAST - Gallery</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="gallery-page">
+    <header>
+        <nav>
+            <div class="logo">
+                <a href="index.html" class="logo-link">
+                    <img src="logo.jpg" alt="FAST Logo" class="logo-img">
+                    <span class="logo-text">FAST</span>
+                </a>
+            </div>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="configurator.html">Configurator</a></li>
+                <li><a href="gallery.html" class="active">Gallery</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="gallery-container">
+            <h1>Our Projects Gallery</h1>
+            <div class="gallery-filters">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="engine">Engine</button>
+                <button class="filter-btn" data-filter="bodykit">Body Kits</button>
+                <button class="filter-btn" data-filter="suspension">Suspension</button>
+                <button class="filter-btn" data-filter="brakes">Brakes</button>
+            </div>
+
+            <div class="gallery-grid">
+                <div class="gallery-item" data-category="engine">
+                    <img src="https://images.unsplash.com/photo-1591439657848-9f4b9ce436b9" alt="Engine Tuning">
+                    <div class="item-overlay">
+                        <h3>Stage 3 Engine Build</h3>
+                        <p>700+ HP Performance Build</p>
+                        <button class="view-project-btn">View Details</button>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-category="bodykit">
+                    <img src="https://images.unsplash.com/photo-1603386329225-868f9b1ee6c9" alt="Wide Body Kit">
+                    <div class="item-overlay">
+                        <h3>Custom Wide Body</h3>
+                        <p>Full Body Transformation</p>
+                        <button class="view-project-btn">View Details</button>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-category="suspension">
+                    <img src="https://images.unsplash.com/photo-1580274455191-1c62238fa333" alt="Air Suspension">
+                    <div class="item-overlay">
+                        <h3>Air Suspension Setup</h3>
+                        <p>Premium Air Ride System</p>
+                        <button class="view-project-btn">View Details</button>
+                    </div>
+                </div>
+
+                <div class="gallery-item" data-category="brakes">
+                    <img src="https://images.unsplash.com/photo-1567789884554-0b844b597180" alt="Brake System">
+                    <div class="item-overlay">
+                        <h3>Race Brake Package</h3>
+                        <p>Track-Ready Braking System</p>
+                        <button class="view-project-btn">View Details</button>
+                    </div>
+                </div>
+
+                <!-- Add more gallery items as needed -->
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p class="copyright">&copy; 2024 FAST Car Tuning. All rights reserved.</p>
+    </footer>
+
+    <script src="gallery.js"></script>
+</body>
+</html> 
